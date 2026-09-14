@@ -4,6 +4,7 @@ using namespace std;
 
 int iterativeCount;
 int recursiveCount;
+int linearCount;
 
 int iterativeBinarySearch(vector<int>&nums, int target) {
     iterativeCount = 0;
@@ -50,6 +51,16 @@ int recursiveBinarySearch(vector<int>&nums, int low, int high, int target) {
     }
 }
 
+int linearSearch(vector<int>&nums, int target) {
+    linearCount = 0;
+    for (int i = 0; i < nums.size(); i++) {
+        linearCount++;
+        if (nums[i] == target) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 int main() {
     vector<int>nums = {2, 6, 13, 19, 24};
@@ -63,7 +74,7 @@ int main() {
     cout << "Comparisons: " << iterativeCount << endl;
     cout << "Index : " << iterativeBinarySearch(nums, 1) << endl;
     cout << "Comparisons: " << iterativeCount << endl;
-    cout << "Index : " << iterativeBinarySearch(nums, 25) << endl;
+    cout << "Index : " << iterativeBinarySearch(nums, 20) << endl;
     cout << "Comparisons: " << iterativeCount << endl << endl;
 
     cout << "Recursive Search Test" << endl;
@@ -79,6 +90,18 @@ int main() {
     cout << "Index : " << recursiveBinarySearch(nums, 0, nums.size() - 1, 1) << endl;
     cout << "Comparisons: " << recursiveCount << endl;
     recursiveCount = 0;
-    cout << "Index : " << recursiveBinarySearch(nums, 0, nums.size() - 1, 25) << endl;
+    cout << "Index : " << recursiveBinarySearch(nums, 0, nums.size() - 1, 20) << endl;
     cout << "Comparisons: " << recursiveCount << endl;
+
+    cout << endl << "Linear Search Test" << endl;
+    cout << "Index : " << linearSearch(nums, 2) << endl;
+    cout << "Comparisons: " << linearCount << endl;
+    cout << "Index : " << linearSearch(nums, 24) << endl;
+    cout << "Comparisons: " << linearCount << endl;
+    cout << "Index : " << linearSearch(nums, 13) << endl;
+    cout << "Comparisons: " << linearCount << endl;
+    cout << "Index : " << linearSearch(nums, 1) << endl;
+    cout << "Comparisons: " << linearCount << endl;
+    cout << "Index : " << linearSearch(nums, 20) << endl;
+    cout << "Comparisons: " << linearCount << endl;
 }
